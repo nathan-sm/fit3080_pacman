@@ -1,23 +1,19 @@
-## Assignment 1 Branch
+# Assignment 1
 
-This is the assignment 1 branch of the repo for FIT3080. This branch contains all the code you need for assignment 1. To get started with the assignment please follow the instructuions or in the getting started guide to clone the repo. 
-If you are unsure on how to clone our repo and navigate to the relevant branch, or have trouble with the instructions below, please contact us over the Ed forum, in your class or during consultation hours. We're happy to help get you set up for the assignments!
+This is your personal Git repository for assignment 1. It contains all the code you need.
 
----
+Please only edit the following files:
 
-## Clone this repository
+- `agents/q2Agent.py`
+- `problems/q1a_problem.py`
+- `problems/q1b_problem.py`
+- `problems/q1c_problem.py`
+- `solvers/q1a_solver.py`
+- `solvers/q1b_solver.py`
+- `solvers/q1c_solver.py`
 
-Run the following in the command line in the directory where you would like this repo to be stored.
+Other files will not be seen in the automatic grading system.
 
-git clone --branch assignment1 https://bitbucket.org/shortestpathlab/fit3080.git
+To use Git, you can use the `git` command in the terminal or [SourceTree](https://www.sourcetreeapp.com/) if you prefer a GUI. Once ready for grading, push your code to your BitBucket repo and click the Evaluate My Code button in the grading portal. The grading system will pull your code from this BitBucket repo and run the evaluation.
 
-You can also use [SourceTree](https://www.sourcetreeapp.com/) to clone the repo without using the command line. We recommend you use the command line as it is good practice and less work overall. 
-If you decide to use SourceTree then be aware that the teaching doesn't have experience with it and may not be able to help you if you get stuck. There should be plenty of resources to help you online though.    
-
----
-
-## Next Steps
-
-Once you have cloned the repository you should finish reading the getting started guide and explore the code. Once you've finished with that you should be very prepared to tackle the assignment!
-
----
+This repository is originally cloned from the `assignment1` branch of the repository at <https://github.com/ethantwills/fit3080_2024>. If there are updates to this code, please merge from here.

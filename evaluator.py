@@ -6,14 +6,13 @@ from itertools import chain, product
 from optparse import OptionParser
 from typing import Dict, List
 
-
 def disclaimer() -> bool:
     message = """
     -------------------------------------------------------------------------------
                                     ATTENTION
 
-    Please ensure you are up to date with the latest code changes. Failing to stay 
-    updated with the latest code changes puts your work at risk of not being 
+    Please ensure you are up to date with the latest code changes. Failing to stay
+    updated with the latest code changes puts your work at risk of not being
     evaluated correctly.
     -------------------------------------------------------------------------------
     I CONFIRM I HAVE PULLED THE LATEST VERSION OF ASSIGNMENT: [y/N] """
@@ -30,7 +29,6 @@ def run(all_arguments: Dict):
         command.append("-q")
         command.append("-f")
         subprocess.call(command)
-
 
 if __name__ == "__main__":
 
@@ -49,7 +47,7 @@ if __name__ == "__main__":
         "--outfile": ["question_1a"],
         "--timeout":["1"]
         }
-    
+
     question_1b_pattern = "q1b_*.lay"
     question_1b_layouts = glob.glob(layouts_dir + question_1b_pattern)
     question_1b_args = {
@@ -60,7 +58,7 @@ if __name__ == "__main__":
         "--outfile": ["question_1b"],
         "--timeout":["5"]
         }
-    
+
     question_1c_pattern = "q1c_*.lay"
     question_1c_layouts = glob.glob(layouts_dir + question_1c_pattern)
     question_1c_args = {
@@ -69,43 +67,24 @@ if __name__ == "__main__":
         "--agentArgs": ["fn=q1c_solver,prob=q1c_problem"],
         "--layout": question_1c_layouts,
         "--outfile": ["question_1c"],
-        "--timeout":["30"]
+        "--timeout":["10"]
         }
-    
-    question_2a_patterns = "q2a_*.lay"
-    question_2a_layouts = glob.glob(layouts_dir + question_2a_patterns)
-    question_2a_args = {
-        "python": ["pacman.py"],
-        "--pacman": ["Q2A_Agent"],
-        "--layout": question_2a_layouts,
-        "--outfile": ["question_2a"],
-        "--timeout":["30"]
-        }
-    
-    question_2b_patterns = "q2b_*.lay"
-    question_2b_layouts = glob.glob(layouts_dir + question_2b_patterns)
-    question_2b_args = {
-        "python": ["pacman.py"],
-        "--pacman": ["Q2B_Agent"],
-        "--layout": question_2b_layouts,
-        "--outfile": ["question_2b"],
-        "--timeout":["30"]
-        }
-    
 
-    
+    question_2_patterns = "q2_*.lay"
+    question_2_layouts = glob.glob(layouts_dir + question_2_patterns)
+    question_2_args = {
+        "python": ["pacman.py"],
+        "--pacman": ["Q2_Agent"],
+        "--layout": question_2_layouts,
+        "--outfile": ["question_2"],
+        "--timeout":["30"]
+        }
+
     if disclaimer() != "y":
         print("")
         exit()
 
-
     run(question_1a_args)
     run(question_1b_args)
     run(question_1c_args)
-    run(question_2a_args)
-    run(question_2b_args)
-    
-
-
-
-    
+    run(question_2_args)

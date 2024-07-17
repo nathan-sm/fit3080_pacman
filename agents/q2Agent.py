@@ -18,7 +18,7 @@ def scoreEvaluationFunction(currentGameState):
     """
     return currentGameState.getScore()
 
-class Q2B_Agent(Agent):
+class Q2_Agent(Agent):
 
     def __init__(self, evalFn = 'scoreEvaluationFunction', depth = '3'):
         self.index = 0 # Pacman is always agent index 0
