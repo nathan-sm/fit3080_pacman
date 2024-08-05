@@ -144,7 +144,8 @@ if __name__ == "__main__":
 
             t.set_description(f"Running Q1a:{row['layout']}")
             command = ['python', 'pacman.py', '-l', row['layout'], '-p', 'SearchAgent', '-a',
-            'fn=q1a_solver,prob=q1a_problem', '--timeout=1', '-q']
+                       'fn=q1a_solver,prob=q1a_problem', '--timeout=1', '-q',
+                       '-o', os.path.splitext(os.path.basename(row['layout']))[0]]
             result = run(command)
 
             re_match = re.search(r"Average\sScore:\s*(.*)$", result.stdout.decode('utf-8'), re.MULTILINE)
@@ -160,7 +161,8 @@ if __name__ == "__main__":
 
             t.set_description(f"Running Q1b:{row['layout']}")
             command = ['python', 'pacman.py', '-l', row['layout'], '-p', 'SearchAgent', '-a',
-                    'fn=q1b_solver,prob=q1b_problem', '--timeout=5', '-q']
+                       'fn=q1b_solver,prob=q1b_problem', '--timeout=5', '-q',
+                       '-o', os.path.splitext(os.path.basename(row['layout']))[0]]
             result = run(command)
 
             re_match = re.search(r"Average\sScore:\s*(.*)$", result.stdout.decode('utf-8'), re.MULTILINE)
@@ -176,7 +178,8 @@ if __name__ == "__main__":
 
             t.set_description(f"Running Q1c:{row['layout']}")
             command = ['python', 'pacman.py', '-l', row['layout'], '-p', 'SearchAgent', '-a',
-                    'fn=q1c_solver,prob=q1c_problem', '--timeout=10', '-q']
+                       'fn=q1c_solver,prob=q1c_problem', '--timeout=10', '-q',
+                       '-o', os.path.splitext(os.path.basename(row['layout']))[0]]
             result = run(command)
 
             re_match = re.search(r"Average\sScore:\s*(.*)$", result.stdout.decode('utf-8'), re.MULTILINE)
@@ -185,14 +188,14 @@ if __name__ == "__main__":
             re_match = re.search(r"Win\sRate:\s*(.*)$", result.stdout.decode('utf-8'), re.MULTILINE)
             question_1c.at[index, 'win_rate'] = re_match.group(1) if re_match else None
 
-    
-    # # Question 2
+    # Question 2
     if args["q2"]:
         for index, row in (t := tqdm(question_2.iterrows(), total=question_2.shape[0])):
             if not os.path.isfile(row['layout']): continue
 
             t.set_description(f"Running Q2:{row['layout']}")
-            command = ['python', 'pacman.py', '-l', row['layout'], '-p', 'Q2_Agent', '--timeout=30', '-q', '-f']
+            command = ['python', 'pacman.py', '-l', row['layout'], '-p', 'Q2_Agent', '--timeout=30', '-q', '-f',
+                       '-o', os.path.splitext(os.path.basename(row['layout']))[0]]
             result = run(command)
 
             re_match = re.search(r"Average\sScore:\s*(.*)$", result.stdout.decode('utf-8'), re.MULTILINE)
