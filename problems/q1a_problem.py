@@ -13,23 +13,18 @@ class q1a_problem:
     A search problem defines the state space, start state, goal test, successor
     function and cost function.  This search problem can be used to find paths
     to a particular point on the pacman board.
-
-    The state space consists of (x,y) positions in a pacman game.
-
-    Note: this search problem is fully specified; you should NOT change it.
     """
     def __str__(self):
         return str(self.__class__.__module__)
 
     def __init__(self, gameState: GameState):
         """
-        Stores the start and goal.
-
         gameState: A GameState object (pacman.py)
-        costFn: A function from a search state (tuple) to a non-negative number
-        goal: A position in the gameState
+
+        Store anything else that you think would helpful for your agent
         """
         self.startingGameState: GameState = gameState
+        "*** YOUR CODE HERE ***"
 
     @log_function
     def getStartState(self):
