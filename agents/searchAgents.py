@@ -39,7 +39,7 @@ class SearchAgent(Agent):
     Note: You should NOT change any code in SearchAgent
     """
 
-    def __init__(self, fn, prob, heuristic):
+    def __init__(self, fn, prob, heuristic=None):
         # Warning: some advanced Python magic is employed below to find the right functions and problems
 
         GameStateData.verbose = False
