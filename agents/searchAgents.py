@@ -12,27 +12,6 @@
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
 
-"""
-This file contains all of the agents that can be selected to control Pacman.  To
-select an agent, use the '-p' option when running pacman.py.  Arguments can be
-passed to your agent using '-a'.  For example, to load a SearchAgent that uses
-depth first search (dfs), run the following command:
-
-> python pacman.py -p SearchAgent -a fn=depthFirstSearch
-
-Commands to invoke other search strategies can be found in the project
-description.
-
-Please only change the parts of the file you are asked to.  Look for the lines
-that say
-
-"*** YOUR CODE HERE ***"
-
-The parts you fill in start about 3/4 of the way down.  Follow the project
-description for details.
-
-Good luck and happy searching!
-"""
 import glob
 import logging
 import time
@@ -60,7 +39,7 @@ class SearchAgent(Agent):
     Note: You should NOT change any code in SearchAgent
     """
 
-    def __init__(self, fn='depthFirstSearch', prob='PositionSearchProblem', heuristic='nullHeuristic'):
+    def __init__(self, fn, prob, heuristic):
         # Warning: some advanced Python magic is employed below to find the right functions and problems
 
         GameStateData.verbose = False
