@@ -28,18 +28,17 @@ class SearchAgent(Agent):
     algorithm for a supplied search problem, then returns actions to follow that
     path.
 
-    As a default, this agent runs DFS on a PositionSearchProblem to find
-    location (1,1)
 
-    Options for fn include:
-      depthFirstSearch or dfs
-      breadthFirstSearch or bfs
+    fn: a string with the name of your solver functions, e.g. q1a_solver.
+    prob: a string with the name of one of your search problem classes, e.g. q1a_problem
+    
+    These should be specified at the command line as per the examples in the assignment specification
 
 
     Note: You should NOT change any code in SearchAgent
     """
 
-    def __init__(self, fn, prob, heuristic=None):
+    def __init__(self, fn: str, prob: str):
         # Warning: some advanced Python magic is employed below to find the right functions and problems
 
         GameStateData.verbose = False
