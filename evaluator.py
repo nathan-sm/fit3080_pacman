@@ -6,6 +6,8 @@ from itertools import chain, product
 from optparse import OptionParser
 from typing import Dict, List
 
+from datetime import datetime
+
 
 
 import json
@@ -100,7 +102,7 @@ if __name__ == "__main__":
 
     question_1a_setup: Dict = {
         'layout': question_1a_layouts,
-        'average_score': None,
+        'path_length': None,
         'win_rate': None,
     }
 
@@ -131,12 +133,11 @@ if __name__ == "__main__":
 
             t.set_description(f"Running Q1a:{row['layout']}")
             command = ['python', 'pacman.py', '-l', row['layout'], '-p', 'SearchAgent', '-a',
-                       'fn=q1a_solver,prob=q1a_problem', '--timeout=1', '-q',
-                       '-o', os.path.splitext(os.path.basename(row['layout']))[0]]
+            'fn=q1a_solver,prob=q1a_problem', '--timeout=1', '-q']
             result = run(command)
 
-            re_match = re.search(r"Average\sScore:\s*(.*)$", result.stdout.decode('utf-8'), re.MULTILINE)
-            question_1a.at[index, 'average_score'] = re_match.group(1) if re_match else None
+            re_match = re.search(r"pathLength:\s*(.*)$", result.stdout.decode('utf-8'), re.MULTILINE)
+            question_1a.at[index, 'path_length'] = re_match.group(1).strip("[]") if re_match else None
 
             re_match = re.search(r"Win\sRate:\s*(.*)$", result.stdout.decode('utf-8'), re.MULTILINE)
             question_1a.at[index, 'win_rate'] = re_match.group(1) if re_match else None
@@ -148,8 +149,7 @@ if __name__ == "__main__":
 
             t.set_description(f"Running Q1b:{row['layout']}")
             command = ['python', 'pacman.py', '-l', row['layout'], '-p', 'SearchAgent', '-a',
-                       'fn=q1b_solver,prob=q1b_problem', '--timeout=5', '-q',
-                       '-o', os.path.splitext(os.path.basename(row['layout']))[0]]
+                    'fn=q1b_solver,prob=q1b_problem', '--timeout=5', '-q']
             result = run(command)
 
             re_match = re.search(r"Average\sScore:\s*(.*)$", result.stdout.decode('utf-8'), re.MULTILINE)
@@ -158,14 +158,14 @@ if __name__ == "__main__":
             re_match = re.search(r"Win\sRate:\s*(.*)$", result.stdout.decode('utf-8'), re.MULTILINE)
             question_1b.at[index, 'win_rate'] = re_match.group(1) if re_match else None
 
-    # Question 2
+    
+    # # Question 2
     if args["q2"]:
         for index, row in (t := tqdm(question_2.iterrows(), total=question_2.shape[0])):
             if not os.path.isfile(row['layout']): continue
 
             t.set_description(f"Running Q2:{row['layout']}")
-            command = ['python', 'pacman.py', '-l', row['layout'], '-p', 'Q2_Agent', '--timeout=30', '-q', '-f',
-                       '-o', os.path.splitext(os.path.basename(row['layout']))[0]]
+            command = ['python', 'pacman.py', '-l', row['layout'], '-p', 'Q2_Agent', '--timeout=30', '-q', '-f']
             result = run(command)
 
             re_match = re.search(r"Average\sScore:\s*(.*)$", result.stdout.decode('utf-8'), re.MULTILINE)
@@ -181,9 +181,9 @@ if __name__ == "__main__":
 
     print("\nEvaluation Report")
     print("=" * 160)
-    print(f"Question 1a Results:\n{question_1a.to_markdown()}\n")
-    print(f"Question 1b Results:\n{question_1b.to_markdown()}\n")
-    print(f"Question 2 Results:\n{question_2.to_markdown()}\n")
+    if args["q1a"]: print(f"Question 1a Results:\n{question_1a.to_markdown()}\n")
+    if args["q1b"]: print(f"Question 1b Results:\n{question_1b.to_markdown()}\n")
+    if args["q2"]: print(f"Question 2 Results:\n{question_2.to_markdown()}\n")
 
     print("=" * 160)
 
